@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/models/terrain/terrain.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://assets/models/player/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/tree.meshlib" type="MeshLibrary" id=3]
 [ext_resource path="res://script/DeathZone.gd" type="Script" id=4]
+[ext_resource path="res://assets/models/obstacles/Barrier.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -15,6 +16,87 @@ adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 150, 1, 200 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -3.66204, 3.24278, -82.0206 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "barrier_bergerak"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -3.66204, 3.24278, -82.0206 ), Vector3( 3.7404, 3.24278, -82.0206 ), Vector3( -3.66204, 3.24278, -82.0206 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 3.72994, 3.24278, -149.27 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "barrier_bergerak"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -3.66204, 3.24278, -82.0206 ), Vector3( 3.7404, 3.24278, -82.0206 ), Vector3( -3.66204, 3.24278, -82.0206 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "barrier_bergerak_2"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.72994, 3.24278, -149.27 ), Vector3( -3.73485, 3.24278, -149.27 ), Vector3( 3.72994, 3.24278, -149.27 ) ]
+}
 
 [node name="Level_01" type="Spatial"]
 
@@ -62,7 +144,6 @@ __meta__ = {
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.5, -0.75, 0.433013, 0, 0.5, 0.866025, -0.866025, -0.433013, 0.25, 0, 50, 0 )
-shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
@@ -73,5 +154,31 @@ script = ExtResource( 4 )
 [node name="CollisionShape" type="CollisionShape" parent="DeathZone"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, -100 )
 shape = SubResource( 2 )
+
+[node name="Barrier" parent="." instance=ExtResource( 5 )]
+transform = Transform( -6.55671e-08, 0, 2.5, 0, 2, 0, -1.5, 0, -1.09278e-07, 0.0572619, 2.59251, 7.2464 )
+
+[node name="Barrier2" parent="." instance=ExtResource( 5 )]
+transform = Transform( -6.55671e-08, 0, 2.5, 0, 2, 0, -1.5, 0, -1.09278e-07, 3.90229, 2.59251, 7.2464 )
+
+[node name="Barrier3" parent="." instance=ExtResource( 5 )]
+transform = Transform( -6.55671e-08, 0, 2.5, 0, 2, 0, -1.5, 0, -1.09278e-07, -3.81769, 2.59251, 7.2464 )
+
+[node name="Barrier_Bergerak" parent="." instance=ExtResource( 5 )]
+transform = Transform( -6.55671e-08, 0, 3, 0, 3, 0, -1.5, 0, -1.31134e-07, -3.66204, 3.24278, -82.0206 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Barrier_Bergerak"]
+autoplay = "barrier_bergerak"
+anims/RESET = SubResource( 3 )
+anims/barrier_bergerak = SubResource( 4 )
+
+[node name="Barrier_Bergerak2" parent="." instance=ExtResource( 5 )]
+transform = Transform( -6.55671e-08, 0, 3, 0, 3, 0, -1.5, 0, -1.31134e-07, 3.72994, 3.24278, -149.27 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Barrier_Bergerak2"]
+autoplay = "barrier_bergerak_2"
+anims/RESET = SubResource( 5 )
+anims/barrier_bergerak = SubResource( 6 )
+anims/barrier_bergerak_2 = SubResource( 7 )
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
