@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/models/terrain/terrain.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://assets/models/player/Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/tree.meshlib" type="MeshLibrary" id=3]
 [ext_resource path="res://script/DeathZone.gd" type="Script" id=4]
 [ext_resource path="res://assets/models/obstacles/Barrier.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/models/terrain/finish_block.meshlib" type="MeshLibrary" id=6]
+[ext_resource path="res://script/VictoryZone.gd" type="Script" id=7]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -15,7 +17,7 @@ adjustment_contrast = 1.5
 adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 150, 1, 200 )
+extents = Vector3( 150, 1, 300 )
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -97,6 +99,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 3.72994, 3.24278, -149.27 ), Vector3( -3.73485, 3.24278, -149.27 ), Vector3( 3.72994, 3.24278, -149.27 ) ]
 }
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 12, 1, 8 )
 
 [node name="Level_01" type="Spatial"]
 
@@ -181,4 +186,23 @@ anims/RESET = SubResource( 5 )
 anims/barrier_bergerak = SubResource( 6 )
 anims/barrier_bergerak_2 = SubResource( 7 )
 
+[node name="finish_area" type="GridMap" parent="."]
+mesh_library = ExtResource( 6 )
+data = {
+"cells": PoolIntArray( 0, 65389, 0, 1, 65389, 0, 2, 65389, 0, 3, 65389, 0, 4, 65389, 0, 5, 65389, 0, 65530, 65389, 0, 65531, 65389, 0, 65532, 65389, 0, 65533, 65389, 0, 65534, 65389, 0, 65535, 65389, 0, 0, 65390, 0, 1, 65390, 0, 2, 65390, 0, 3, 65390, 0, 4, 65390, 0, 5, 65390, 0, 65530, 65390, 0, 65531, 65390, 0, 65532, 65390, 0, 65533, 65390, 0, 65534, 65390, 0, 65535, 65390, 0, 0, 65391, 0, 1, 65391, 0, 2, 65391, 0, 3, 65391, 0, 4, 65391, 0, 5, 65391, 0, 65530, 65391, 0, 65531, 65391, 0, 65532, 65391, 0, 65533, 65391, 0, 65534, 65391, 0, 65535, 65391, 0, 0, 65392, 0, 1, 65392, 0, 2, 65392, 0, 3, 65392, 0, 4, 65392, 0, 5, 65392, 0, 65530, 65392, 0, 65531, 65392, 0, 65532, 65392, 0, 65533, 65392, 0, 65534, 65392, 0, 65535, 65392, 0, 0, 65393, 0, 1, 65393, 0, 2, 65393, 0, 3, 65393, 0, 4, 65393, 0, 5, 65393, 0, 65530, 65393, 0, 65531, 65393, 0, 65532, 65393, 0, 65533, 65393, 0, 65534, 65393, 0, 65535, 65393, 0, 0, 65394, 0, 1, 65394, 0, 2, 65394, 0, 3, 65394, 0, 4, 65394, 0, 5, 65394, 0, 65530, 65394, 0, 65531, 65394, 0, 65532, 65394, 0, 65533, 65394, 0, 65534, 65394, 0, 65535, 65394, 0, 0, 65395, 0, 1, 65395, 0, 2, 65395, 0, 3, 65395, 0, 4, 65395, 0, 5, 65395, 0, 65530, 65395, 0, 65531, 65395, 0, 65532, 65395, 0, 65533, 65395, 0, 65534, 65395, 0, 65535, 65395, 0, 0, 65396, 0, 1, 65396, 0, 2, 65396, 0, 3, 65396, 0, 4, 65396, 0, 5, 65396, 0, 65530, 65396, 0, 65531, 65396, 0, 65532, 65396, 0, 65533, 65396, 0, 65534, 65396, 0, 65535, 65396, 0, 0, 65397, 0, 1, 65397, 0, 2, 65397, 0, 3, 65397, 0, 4, 65397, 0, 5, 65397, 0, 65530, 65397, 0, 65531, 65397, 0, 65532, 65397, 0, 65533, 65397, 0, 65534, 65397, 0, 65535, 65397, 0, 0, 65398, 0, 1, 65398, 0, 2, 65398, 0, 3, 65398, 0, 4, 65398, 0, 5, 65398, 0, 65530, 65398, 0, 65531, 65398, 0, 65532, 65398, 0, 65533, 65398, 0, 65534, 65398, 0, 65535, 65398, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0
+}
+
+[node name="VictoryZone" type="Area" parent="finish_area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.621342, -282.508 )
+script = ExtResource( 7 )
+NEXT_LEVEL = "res://scene/Victory_Scene.tscn"
+
+[node name="CollisionShape" type="CollisionShape" parent="finish_area/VictoryZone"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716393, 0 )
+shape = SubResource( 8 )
+
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
+[connection signal="body_entered" from="finish_area/VictoryZone" to="finish_area/VictoryZone" method="_on_VictoryZone_body_entered"]

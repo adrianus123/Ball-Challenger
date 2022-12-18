@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/models/tree.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://assets/models/terrain/terrain.meshlib" type="MeshLibrary" id=2]
 [ext_resource path="res://assets/models/player/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://script/DeathZone.gd" type="Script" id=4]
+[ext_resource path="res://assets/models/terrain/finish_block.meshlib" type="MeshLibrary" id=5]
+[ext_resource path="res://script/VictoryZone.gd" type="Script" id=6]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -18,6 +20,9 @@ adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 150, 1, 150 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 7, 1, 7 )
 
 [node name="Level_2" type="Spatial"]
 
@@ -62,4 +67,23 @@ script = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -20, -100 )
 shape = SubResource( 2 )
 
+[node name="finish_area" type="GridMap" parent="."]
+mesh_library = ExtResource( 5 )
+data = {
+"cells": PoolIntArray( 0, 65486, 0, 1, 65486, 0, 2, 65486, 0, 3, 65486, 0, 4, 65486, 0, 65533, 65486, 0, 65534, 65486, 0, 65535, 65486, 0, 0, 65487, 0, 1, 65487, 0, 2, 65487, 0, 3, 65487, 0, 4, 65487, 0, 65533, 65487, 0, 65534, 65487, 0, 65535, 65487, 0, 0, 65488, 0, 1, 65488, 0, 2, 65488, 0, 3, 65488, 0, 4, 65488, 0, 65533, 65488, 0, 65534, 65488, 0, 65535, 65488, 0, 0, 65489, 0, 1, 65489, 0, 2, 65489, 0, 3, 65489, 0, 4, 65489, 0, 65533, 65489, 0, 65534, 65489, 0, 65535, 65489, 0, 0, 65490, 0, 1, 65490, 0, 2, 65490, 0, 3, 65490, 0, 4, 65490, 0, 65533, 65490, 0, 65534, 65490, 0, 65535, 65490, 0, 0, 65491, 0, 1, 65491, 0, 2, 65491, 0, 3, 65491, 0, 4, 65491, 0, 65533, 65491, 0, 65534, 65491, 0, 65535, 65491, 0, 0, 65492, 0, 1, 65492, 0, 2, 65492, 0, 3, 65492, 0, 4, 65492, 0, 65533, 65492, 0, 65534, 65492, 0, 65535, 65492, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
+
+[node name="VictoryZone" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73018, 1.16891, -93.9927 )
+script = ExtResource( 6 )
+NEXT_LEVEL = "res://scene/environment/Level_2.tscn"
+
+[node name="CollisionShape" type="CollisionShape" parent="VictoryZone"]
+shape = SubResource( 3 )
+
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
+[connection signal="body_entered" from="VictoryZone" to="VictoryZone" method="_on_VictoryZone_body_entered"]
