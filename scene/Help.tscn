@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/BungeeShade-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Ranchers-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/sound/mixkit-game-click-1114.wav" type="AudioStream" id=3]
+[ext_resource path="res://script/Help.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[node name="Help Scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.109804, 0.188235, 0.192157, 1 )
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_left = 0.42
+anchor_top = 0.059
+anchor_right = 0.58
+anchor_bottom = 0.148
+margin_left = 0.299988
+margin_top = -0.860003
+margin_right = -0.300049
+margin_bottom = 0.0800018
+custom_fonts/font = SubResource( 1 )
+text = "HELP"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+anchor_left = 0.269
+anchor_top = 0.296
+anchor_right = 0.725
+anchor_bottom = 0.756
+margin_left = -0.240021
+margin_top = -1.84
+margin_right = 6.0
+margin_bottom = 5.75998
+custom_fonts/normal_font = SubResource( 2 )
+text = "Cara Bermain :
+
+1. Gunakan Up Key untuk maju
+2. Gunakan Down Key untuk mundur
+3. Gunakan Left Key untuk belok ke kiri
+4. Gunakan Right Key untuk belok ke kanan
+5. Gunakan Space Key untuk loncat
+6. Gunakan Escape Key untuk jeda permainan"
+fit_content_height = true
+
+[node name="Back Button" type="Button" parent="ColorRect"]
+anchor_left = 0.477
+anchor_top = 0.893
+anchor_right = 0.523
+anchor_bottom = 0.943
+margin_left = -0.420013
+margin_top = -0.220032
+margin_right = 0.419983
+margin_bottom = -0.220001
+custom_fonts/font = SubResource( 3 )
+text = "Back"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ColorRect/Back Button"]
+stream = ExtResource( 3 )
+
+[connection signal="pressed" from="ColorRect/Back Button" to="." method="_on_Back_Button_pressed"]

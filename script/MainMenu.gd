@@ -21,11 +21,11 @@ func on_start_pressed():
 
 func on_help_pressed():
 	$CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton/AudioStreamPlayer.play()
-	pass
+	get_tree().change_scene("res://scene/Help.tscn")
 
 func on_about_pressed():
 	$CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton/AudioStreamPlayer.play()
-	pass
+	get_tree().change_scene("res://scene/AboutMenu.tscn")
 
 func on_quit_pressed():
 	$CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton/AudioStreamPlayer.play()
