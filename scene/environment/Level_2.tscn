@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/models/terrain/terrain.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://assets/models/player/Ball.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/models/obstacles/Barrier.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/models/terrain/finish_block.meshlib" type="MeshLibrary" id=6]
 [ext_resource path="res://script/VictoryZone.gd" type="Script" id=7]
+[ext_resource path="res://scene/GUI.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -203,6 +204,8 @@ NEXT_LEVEL = "res://scene/Victory_Scene.tscn"
 [node name="CollisionShape" type="CollisionShape" parent="finish_area/VictoryZone"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716393, 0 )
 shape = SubResource( 8 )
+
+[node name="GUI" parent="." instance=ExtResource( 8 )]
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
 [connection signal="body_entered" from="finish_area/VictoryZone" to="finish_area/VictoryZone" method="_on_VictoryZone_body_entered"]

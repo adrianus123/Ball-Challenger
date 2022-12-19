@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scene/main_menu/Fader.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scene/main_menu/3D_Main_Menu.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/fonts/BungeeShade-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://script/MainMenu.gd" type="Script" id=5]
 [ext_resource path="res://scene/environment/Level_1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sound/mixkit-game-click-1114.wav" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 110
@@ -71,6 +72,9 @@ margin_right = 153.0
 margin_bottom = 47.0
 custom_fonts/font = SubResource( 2 )
 text = "Start Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton"]
+stream = ExtResource( 7 )
 
 [node name="HelpButton" type="Button" parent="CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer"]
 margin_top = 51.0

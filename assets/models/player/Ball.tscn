@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/models/ball.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://script/Ball.gd" type="Script" id=2]
+[ext_resource path="res://assets/sound/Jump-SoundBible.com-1007297584.wav" type="AudioStream" id=3]
 
 [sub_resource type="PhysicsMaterial" id=3]
 friction = 4.0
@@ -36,3 +37,6 @@ current = true
 [node name="FloorCheck" type="RayCast" parent="."]
 enabled = true
 cast_to = Vector3( 0, -1.5, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )

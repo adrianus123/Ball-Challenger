@@ -16,15 +16,19 @@ func _ready():
 	fader.connect("fade_finished", self, "on_fade_finished")
 
 func on_start_pressed():
+	$CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton/AudioStreamPlayer.play()
 	fader.fade_in()
 
 func on_help_pressed():
+	$CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton/AudioStreamPlayer.play()
 	pass
 
 func on_about_pressed():
+	$CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton/AudioStreamPlayer.play()
 	pass
 
 func on_quit_pressed():
+	$CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer/StartButton/AudioStreamPlayer.play()
 	get_tree().quit()
 
 func on_fade_finished():

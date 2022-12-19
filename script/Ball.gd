@@ -27,3 +27,5 @@ func _physics_process(delta):
 	var is_on_floor = $FloorCheck.is_colliding()
 	if Input.is_action_just_pressed("jump") and is_on_floor:
 		apply_central_impulse(Vector3.UP * jump_impulse)
+		$AudioStreamPlayer.play()
+
