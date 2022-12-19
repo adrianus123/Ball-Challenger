@@ -20,7 +20,7 @@ func _on_ResumeButton_pressed():
 
 func _on_MainMenuButton_pressed():
 	$CenterContainer/VBoxContainer/ResumeButton/AudioStreamPlayer.play()
-	get_tree().change_scene("res://scene/main_menu/MainMenu.tscn")
+	get_tree().change_scene("res://scene/Lose_Scene.tscn")
 
 func _on_Button_pressed():
 	$CenterContainer/VBoxContainer/ResumeButton/AudioStreamPlayer.play()

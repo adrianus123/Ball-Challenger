@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/models/terrain/terrain.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://assets/models/player/Ball.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/models/terrain/finish_block.meshlib" type="MeshLibrary" id=6]
 [ext_resource path="res://script/VictoryZone.gd" type="Script" id=7]
 [ext_resource path="res://scene/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/models/ban.meshlib" type="MeshLibrary" id=9]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -104,7 +105,7 @@ tracks/0/keys = {
 [sub_resource type="BoxShape" id=8]
 extents = Vector3( 12, 1, 8 )
 
-[node name="Level_01" type="Spatial"]
+[node name="Level_2" type="Spatial"]
 
 [node name="jalan" type="GridMap" parent="."]
 transform = Transform( 6, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0 )
@@ -206,6 +207,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716393, 0 )
 shape = SubResource( 8 )
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
+
+[node name="ban" type="GridMap" parent="."]
+mesh_library = ExtResource( 9 )
+data = {
+"cells": PoolIntArray( 1, 65404, 0, 65534, 65404, 0, 65537, 65404, 0, 131070, 65404, 0, 131073, 65404, 0, 196606, 65404, 0, 0, 65420, 0, 65533, 65420, 0, 65536, 65420, 0, 131069, 65420, 0, 131072, 65420, 0, 196605, 65420, 0, 65535, 65443, 0, 131071, 65443, 0, 65533, 65453, 0, 131069, 65453, 0, 0, 65507, 0, 65535, 65507, 0, 65536, 65507, 0, 131071, 65507, 0, 1, 65522, 0, 65537, 65522, 0, 65534, 65530, 0, 131070, 65530, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 2, 0 )
+}
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
 [connection signal="body_entered" from="finish_area/VictoryZone" to="finish_area/VictoryZone" method="_on_VictoryZone_body_entered"]

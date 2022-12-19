@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/models/tree.meshlib" type="MeshLibrary" id=1]
 [ext_resource path="res://assets/models/terrain/terrain.meshlib" type="MeshLibrary" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://script/VictoryZone.gd" type="Script" id=6]
 [ext_resource path="res://script/Level_1.gd" type="Script" id=7]
 [ext_resource path="res://scene/GUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/models/ban.meshlib" type="MeshLibrary" id=10]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -89,6 +90,16 @@ NEXT_LEVEL = "res://scene/environment/Level_2.tscn"
 shape = SubResource( 3 )
 
 [node name="GUI" parent="." instance=ExtResource( 8 )]
+
+[node name="ban" type="GridMap" parent="."]
+mesh_library = ExtResource( 10 )
+data = {
+"cells": PoolIntArray( 65536, 1, 0, 65537, 1, 0, 65538, 1, 0, 65539, 1, 0, 65540, 1, 0, 131069, 1, 0, 131070, 1, 0, 131071, 1, 0, 65536, 65499, 0, 65537, 65499, 0, 131072, 65499, 0, 131073, 65499, 0, 65537, 65507, 0, 131071, 65516, 0, 65538, 65521, 0, 65536, 65530, 0, 65537, 65530, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 1, 0 )
+}
 
 [connection signal="body_entered" from="DeathZone" to="DeathZone" method="_on_DeathZone_body_entered"]
 [connection signal="body_entered" from="VictoryZone" to="VictoryZone" method="_on_VictoryZone_body_entered"]

@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/BungeeShade-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://script/Lose_Scene.gd" type="Script" id=2]
+[ext_resource path="res://scene/main_menu/Fader.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sound/mixkit-game-click-1114.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -11,20 +14,23 @@ size = 128
 font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
+script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fader" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
 margin_left = 279.0
-margin_top = 139.0
+margin_top = 127.0
 margin_right = 681.0
-margin_bottom = 401.0
+margin_bottom = 413.0
 
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 margin_right = 402.0
 margin_bottom = 129.0
 custom_fonts/font = SubResource( 1 )
@@ -32,7 +38,7 @@ text = "YOU"
 align = 1
 valign = 1
 
-[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
 margin_top = 133.0
 margin_right = 402.0
 margin_bottom = 262.0
@@ -40,3 +46,14 @@ custom_fonts/font = SubResource( 2 )
 text = "LOSE"
 align = 1
 valign = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_top = 266.0
+margin_right = 402.0
+margin_bottom = 286.0
+text = "Go To Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/CenterContainer/VBoxContainer/Button"]
+stream = ExtResource( 4 )
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
